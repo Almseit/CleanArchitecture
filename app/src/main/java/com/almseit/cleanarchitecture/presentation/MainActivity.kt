@@ -1,21 +1,21 @@
 package com.almseit.cleanarchitecture.presentation
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import com.almseit.cleanArchitecture.data.repository.UserRepositoryImpl
+import com.almseit.cleanArchitecture.data.storage.SharedPrefsUserStorage
+import com.almseit.cleanArchitecture.domain.model.SaveUserNameParam
+import com.almseit.cleanArchitecture.domain.useCase.GetUserNameUseCase
+import com.almseit.cleanArchitecture.domain.useCase.SaveUserNameUseCase
 import com.almseit.cleanarchitecture.R
-import com.almseit.cleanarchitecture.data.repository.UserRepositoryImpl
-import com.almseit.cleanarchitecture.data.storage.SharedPrefsUserStorage
-import com.almseit.cleanarchitecture.domain.model.SaveUserNameParam
-import com.almseit.cleanarchitecture.domain.useCase.GetUserNameUseCase
-import com.almseit.cleanarchitecture.domain.useCase.SaveUserNameUseCase
 
 class MainActivity : AppCompatActivity() {
 
 
-    private val userRepository by lazy { UserRepositoryImpl(userStorage = SharedPrefsUserStorage(context = applicationContext))}
+    private val userRepository by lazy { UserRepositoryImpl(userStorage = SharedPrefsUserStorage(context = applicationContext)) }
 
     private val saveUserNameUseCase by lazy { SaveUserNameUseCase(userRepository)}
     private val getUserNameUseCase by lazy { GetUserNameUseCase(userRepository)}

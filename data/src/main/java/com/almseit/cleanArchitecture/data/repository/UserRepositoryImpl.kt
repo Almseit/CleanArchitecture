@@ -1,13 +1,13 @@
-package com.almseit.cleanarchitecture.data.repository
+package com.almseit.cleanArchitecture.data.repository
 
-import com.almseit.cleanarchitecture.data.storage.User
-import com.almseit.cleanarchitecture.data.storage.UserStorage
-import com.almseit.cleanarchitecture.domain.model.SaveUserNameParam
-import com.almseit.cleanarchitecture.domain.model.UserName
-import com.almseit.cleanarchitecture.domain.repository.UserRepository
+import com.almseit.cleanArchitecture.data.storage.User
+import com.almseit.cleanArchitecture.data.storage.UserStorage
+import com.almseit.cleanArchitecture.domain.model.SaveUserNameParam
+import com.almseit.cleanArchitecture.domain.model.UserName
+import com.almseit.cleanArchitecture.domain.repository.UserRepository
 
 
-class UserRepositoryImpl(val userStorage: UserStorage) : UserRepository{
+class UserRepositoryImpl(private val userStorage: UserStorage) : UserRepository {
 
 
     override fun saveName(param: SaveUserNameParam): Boolean {
@@ -27,4 +27,6 @@ class UserRepositoryImpl(val userStorage: UserStorage) : UserRepository{
     private fun mapToDomain(user:User): UserName{
       return UserName(firstName = user.firstName, lastName = user.lastName)
     }
+
+
 }

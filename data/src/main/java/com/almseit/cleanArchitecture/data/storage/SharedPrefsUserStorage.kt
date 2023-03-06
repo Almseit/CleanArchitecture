@@ -1,4 +1,4 @@
-package com.almseit.cleanarchitecture.data.storage
+package com.almseit.cleanArchitecture.data.storage
 
 import android.content.Context
 
