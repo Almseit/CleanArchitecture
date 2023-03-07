@@ -9,19 +9,20 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.almseit.cleanarchitecture.R
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
 
 
 
 
-    private lateinit var vm: MainViewModel
+    private val vm by viewModel<MainViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         Log.d("AAA", "Activity created")
-        vm = ViewModelProvider(this,MainViewModelFactory(this))[MainViewModel::class.java]
+        //vm = ViewModelProvider(this,MainViewModelFactory(this))[MainViewModel::class.java]
         val dataTextView = findViewById<TextView>(R.id.tvData)
         val dataEditText:EditText = findViewById(R.id.etData)
         val sendButton = findViewById<Button>(R.id.btSend)
