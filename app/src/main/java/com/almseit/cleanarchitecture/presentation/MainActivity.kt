@@ -9,19 +9,22 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.almseit.cleanarchitecture.R
+import com.almseit.cleanarchitecture.app.App
 
 class MainActivity : AppCompatActivity() {
 
 
-
-
+    @javax.inject.Inject
+    lateinit var viewModelFactory: MainViewModelFactory
     private lateinit var vm: MainViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        (applicationContext as App).appComponent.inject(this)
         Log.d("AAA", "Activity created")
-        vm = ViewModelProvider(this,MainViewModelFactory(this))[MainViewModel::class.java]
+        vm = ViewModelProvider(this,viewModelFactory)[MainViewModel::class.java]
         val dataTextView = findViewById<TextView>(R.id.tvData)
         val dataEditText:EditText = findViewById(R.id.etData)
         val sendButton = findViewById<Button>(R.id.btSend)
